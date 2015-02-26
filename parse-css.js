@@ -43,7 +43,7 @@ function preprocess(str) {
 		}
 		if(code == 0xd || code == 0xc) code = 0xa;
 		if(code == 0x0) code = 0xfffd;
-		if(between(code, 0xd800, 0xdbff) && between(str.charCodeAt(i+1), 0xdc00, 0xdfff)) {
+		if(between(code, 0xd800, 0xdbff) && i + 1 < str.length && between(str.charCodeAt(i+1), 0xdc00, 0xdfff)) {
 			// Decode a surrogate pair into an astral codepoint.
 			var lead = code - 0xd800;
 			var trail = str.charCodeAt(i+1) - 0xdc00;
